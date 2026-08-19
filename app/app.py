@@ -23,6 +23,7 @@ import tensorflow as tf
 # --------------------------------------------------------------------------
 # Config
 # --------------------------------------------------------------------------
+APP_DIR = Path(__file__).resolve().parent
 DEFAULT_MODEL_PATH = "transformer_model.keras"
 DEFAULT_VOCAB_PATH = "vectorizer_vocab.pkl"
 
@@ -169,6 +170,13 @@ with st.sidebar:
     beam_width = st.slider("Beam width", min_value=1, max_value=8, value=3)
     show_all_beams = st.checkbox("Show all beam candidates", value=False)
     st.caption("Beam width 1 is equivalent to greedy decoding.")
+
+model_path = Path(model_path)
+vocab_path = Path(vocab_path)
+if not model_path.is_absolute():
+    model_path = APP_DIR / model_path
+if not vocab_path.is_absolute():
+    vocab_path = APP_DIR / vocab_path
 
 if not Path(model_path).exists() or not Path(vocab_path).exists():
     st.warning(
