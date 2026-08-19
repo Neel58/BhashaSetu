@@ -1,0 +1,18 @@
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+data/
+checkpoints/
+
+# Virtual environments
+app/venv/
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit secrets
+.streamlit/secrets.toml
